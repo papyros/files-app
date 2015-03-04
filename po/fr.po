@@ -9,7 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-23 20:20-0600\n"
 "PO-Revision-Date: 2015-02-23 23:02-0500\n"
-"Last-Translator: Michael Spencer <sonrisesoftware@gmail.com>\n"
+"First-Translator: Michael Spencer <sonrisesoftware@gmail.com>\n"
+"2-Translator: MrMargouillat ( Raphaël Klaja ) http://margouillat.tk/ \n"
 "Language-Team: French <http://example.com/weblate/projects/papyros/files-"
 "app/fr/>\n"
 "Language: fr\n"
@@ -50,11 +51,11 @@ msgstr "Erreur de nomination"
 
 #: ../src/plugin/folderlistmodel/dirmodel.cpp:622
 msgid "Error creating new folder"
-msgstr "Euureur lors de la création du dossier"
+msgstr "Erreur lors de la création du dossier"
 
 #: ../src/plugin/folderlistmodel/dirmodel.cpp:1264
 msgid "items"
-msgstr ""
+msgstr "éléments"
 
 #: ../src/plugin/folderlistmodel/filesystemaction.cpp:263
 msgid "File or Directory does not exist"
@@ -127,7 +128,7 @@ msgstr ""
 
 #: ../src/plugin/folderlistmodel/filesystemaction.cpp:1120
 msgid "Read error in "
-msgstr ""
+msgstr "Erreur de lecture de"
 
 #: ../src/plugin/folderlistmodel/filesystemaction.cpp:1354
 msgid " Copy"
