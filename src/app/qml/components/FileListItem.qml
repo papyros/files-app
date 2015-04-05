@@ -24,8 +24,11 @@ import Material.ListItems 0.1 as ListItem
 ListItem.Standard {
     id: listItem
 
+    // TODO : select the right icon for file type.
+    iconName: model.isDir ? "file/folder" : "awesome/file"
+    text: folderModel.pathTitle(model.filePath)
     selected: selectedFile != undefined &&
-    selectedFile.filePath == model.filePath
+              selectedFile.filePath == model.filePath
 
     onClicked: {
         if (model.isDir) {
@@ -43,26 +46,9 @@ ListItem.Standard {
             selectedFile = model
     }
 
-    RowLayout {
-        anchors {
-            left: parent.left
-            right: parent.right
-            margins: units.dp(16)
-        }
-
+    secondaryItem: RowLayout {
         height: parent.height - units.dp(1)
         spacing: units.dp(16)
-
-        Label {
-            Layout.alignment: Qt.AlignVCenter
-            Layout.fillWidth: true
-
-            text: folderModel.pathTitle(model.filePath)
-            style: "subheading"
-            elide: Text.ElideRight
-
-            color: selected ? Theme.primaryColor : Theme.light.textColor
-        }
 
         Label {
             Layout.alignment: Qt.AlignVCenter
