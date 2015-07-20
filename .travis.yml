@@ -13,6 +13,9 @@ install:
   - sudo apt-get -y install qt53tools qt53declarative
 
 before_script:
+  - wget http://download.kde.org/stable/frameworks/5.11/extra-cmake-modules-5.11.0.tar.xz
+  - tar -xvf extra-cmake-modules-5.11.0.tar.xz
+  - cd extra-cmake-modules-5.11.0 && cmake -DCMAKE_INSTALL_PREFIX=/usr . && make && sudo make install
   - source /opt/qt53/bin/qt53-env.sh
   - git clone git://github.com/papyros/qml-extras.git
   - git clone git://github.com/papyros/qml-material.git
