@@ -72,6 +72,13 @@ PageSidebar {
                     .arg(selectedFile.fileName), qsTr("Delete")).done(function() {
                 folderModel.model.removeIndex(selectedFile.index)
             })
+        },
+
+        Action {
+            visible: getArchiveType(selectedFile.fileName) != ""
+            iconName: "files/folder"
+            name: qsTr("Extract")
+            onTriggered: extractArchive(selectedFile.filePath, selectedFile.fileName, selectedFile.archiveType)
         }
     ]
 
@@ -156,5 +163,68 @@ PageSidebar {
         }
 
         ThinDivider {}
+    }
+
+    function extractArchive(filePath, fileName, archiveType) {
+        console.log("Extract accepted for filePath, fileName", filePath, fileName)
+        console.log("Extracting...")
+
+        var parentDirectory = filePath.substring(0, filePath.lastIndexOf("/"))
+        var fileNameWithoutExtension = fileName.substring(0, fileName.lastIndexOf(archiveType) - 1)
+        var extractDirectory = parentDirectory + "/" + fileNameWithoutExtension
+
+        // Add numbers if the directory already exist: myfile, myfile-1, myfile-2, etc.
+        while (folderModel.model.existsDir(extractDirectory)) {
+            var i = 0
+            while ("1234567890".indexOf(extractDirectory.charAt(extractDirectory.length - i - 1)) !== -1) {
+                i++
+            }
+            if (i === 0 || extractDirectory.charAt(extractDirectory.length - i - 1) !== "-") {
+                extractDirectory += "-1"
+            } else {
+                extractDirectory = extractDirectory.substring(0, extractDirectory.lastIndexOf("-") + 1) + (parseInt(extractDirectory.substring(extractDirectory.length - i)) + 1)
+            }
+        }
+
+        folderModel.model.mkdir(extractDirectory) // This is needed for the tar command as the given destination has to be an already existing directory
+
+        if (archiveType === "zip") {
+            archives.extractZip(filePath, extractDirectory)
+        } else if (archiveType === "tar") {
+            archives.extractTar(filePath, extractDirectory)
+        } else if (archiveType === "tar.gz") {
+            archives.extractGzipTar(filePath, extractDirectory)
+        } else if (archiveType === "tar.bz2") {
+            archives.extractBzipTar(filePath, extractDirectory)
+        }
+    }
+
+    function getArchiveType(fileName) {
+        var splitName = fileName.split(".")
+
+        if (splitName.length <= 1) { // To sort out files simply named "zip" or "tar"
+            return ""
+        }
+
+        var fileExtension = splitName[splitName.length - 1]
+        if (fileExtension === "zip") {
+            return "zip"
+        } else if (fileExtension === "tar") {
+            return "tar"
+        } else if (fileExtension === "gz") {
+            if (splitName.length > 2 && splitName[splitName.length - 2] === "tar") {
+                return "tar.gz"
+            } else {
+                return ""
+            }
+        } else if (fileExtension === "bz2") {
+            if (splitName.length > 2 && splitName[splitName.length - 2] === "tar") {
+                return "tar.bz2"
+            } else {
+                return ""
+            }
+        } else {
+            return ""
+        }
     }
 }
