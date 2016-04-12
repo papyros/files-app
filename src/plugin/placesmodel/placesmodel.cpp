@@ -58,7 +58,7 @@ PlacesModel::PlacesModel(QObject *parent) :
     }
 
     // Make sure the directories exist
-    for (const auto& location : m_locations) {
+    foreach(const auto& location, m_locations) {
         if(!location.isEmpty() && QDir(location).exists())
             qDebug() << "Location: " << location;
         else
