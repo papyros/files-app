@@ -59,6 +59,8 @@ Sidebar {
                 }
                 text: folderModel.pathTitle(path)
                 selected: folderModel.path == path
+                visible: text != "" && path != ""
+                enabled: visible
 
                 onClicked: folderModel.goTo(path)
             }
