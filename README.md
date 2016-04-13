@@ -5,7 +5,7 @@ Files app for Papryos
 [![Build Status](https://travis-ci.org/papyros/files-app.svg?branch=master)](https://travis-ci.org/papyros/files-app)
 [![Bountysource](https://img.shields.io/bountysource/team/papyros/activity.svg)](https://www.bountysource.com/teams/papyros)
 
-This is the file manager app for Papyros. The UI is build with our [Material Design framework](https://github.com/papyros/qml-material), and the backend is based on the [Ubuntu Touch file manager](https://launchpad.net/ubuntu-filemanager-app). The goal is for the app to be cross patform and run on Linux, OS X, and Windows.
+This is the file manager app for Papyros. The UI is build with our [Material Design framework](https://github.com/papyros/qml-material), and the backend is based on the [Ubuntu Touch file manager](https://launchpad.net/ubuntu-filemanager-app). The goal is for the app to be cross platform and run on Linux, OS X, and Windows.
 
 Brought to you by the [Papyros development team](https://github.com/papyros/files-app/graphs/contributors).
 
