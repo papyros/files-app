@@ -1,6 +1,8 @@
 Files app for Papryos
 =====================
 
+[![Join the chat at https://gitter.im/papyros/files-app](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/papyros/files-app?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![GitHub release](https://img.shields.io/github/release/papyros/files-app.svg)](https://github.com/papyros/files-app)
 [![Build Status](https://travis-ci.org/papyros/files-app.svg?branch=master)](https://travis-ci.org/papyros/files-app)
 [![Bountysource](https://img.shields.io/bountysource/team/papyros/activity.svg)](https://www.bountysource.com/teams/papyros)
